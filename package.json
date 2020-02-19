@@ -1,0 +1,15 @@
+{
+  "name": "assignment-2",
+  "version": "1.0.0",
+  "description": "assignment 2 in 1dv023",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.lnu.se:1dv023/student/oa222ct/assignment-2.git"
+  },
+  "author": "Omar Alhamad",
+  "license": "ISC"
+}
