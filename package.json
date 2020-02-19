@@ -4,14 +4,15 @@
   "description": "assignment 2 in 1dv023",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
     "url": "git@gitlab.lnu.se:1dv023/student/oa222ct/assignment-2.git"
-  },  
+  },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1"
   },
   "author": "Omar Alhamad",
   "license": "ISC",
@@ -22,7 +23,8 @@
     "eslint-plugin-jsdoc": "^21.0.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.2"
   },
   "eslintConfig": {
     "extends": "@lnu"
