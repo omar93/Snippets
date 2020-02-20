@@ -6,6 +6,8 @@ const logger = require('morgan')
 const app = express()
 const port = 8000
 
+const routes = require('./routes/homeRouter')
+
 // view eninge setup
 app.engine('hbs', hbs.express4({
   defaultLayout: path.join(__dirname, 'views', 'layouts', 'default'),
@@ -24,7 +26,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
-app.use('/', require('./routes/homeRouter'))
+app.use('/', routes)
 
 // catch 404
 app.use('*', (req, res) => {
