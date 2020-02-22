@@ -7,6 +7,9 @@ const app = express()
 const port = 8000
 
 const routes = require('./routes/homeRouter')
+const register = require('./routes/registerRouter')
+const login = require('./routes/loginRouter')
+const snippets = require('./routes/snippetsRouter')
 
 // view eninge setup
 app.engine('hbs', hbs.express4({
@@ -20,6 +23,10 @@ hbs.registerHelper('login', function (value, options) {
   return parseInt(value) + 1
 })
 
+hbs.registerHelper('register', function (value, options) {
+  return parseInt(value) + 1
+})
+
 // middleware
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
@@ -27,6 +34,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
 app.use('/', routes)
+app.use('/register', register)
+app.use('/login', login)
+app.use('/snippets', snippets)
 
 // catch 404
 app.use('*', (req, res) => {

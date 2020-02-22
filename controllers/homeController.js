@@ -4,27 +4,24 @@ mongoose.connect('mongodb+srv://admin:omar93@1dv023-cspjr.mongodb.net/assign2?re
 const homeController = {}
 
 const Schema = mongoose.Schema
-
 const userDataSchema = new Schema({
   name: String,
   pw: String
 }, { collection: 'user-data' })
-
 const UserData = mongoose.model('UserData', userDataSchema)
 
 homeController.index = (req, res) => {
-  res.render('home/index')
+  res.render('home/index', { condition: true })
 }
 
-homeController.indexPost = (req, res) => {
+homeController.indexPost = async (req, res) => {
   const item = {
     name: req.body.username,
     pw: req.body.password
   }
 
   const data = new UserData(item)
-  data.save()
-
+  await data.save()
   res.redirect('/')
 }
 

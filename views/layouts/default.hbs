@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Welcome Express</title>
@@ -8,10 +9,12 @@
 </head>
 
 <body>
-  <div id="signin">
-    {{>login '../signin/signedin.hbs'}}
+  <div id="menuContainer">
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <a href="/snippets">Snippets</a>
   </div>
-  
   {{{body}}}
 </body>
+
 </html>

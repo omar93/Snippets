@@ -6,3 +6,17 @@
     border: 1px solid red;
     width: 30%;
 }
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    'register login snippet';
+}
+
+#registerContainer {grid-template-areas: register;}
+#loginContainer {grid-template-areas: login;}
+
+#reglink {
+    margin-left: 120px;
+}
