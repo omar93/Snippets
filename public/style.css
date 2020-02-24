@@ -1,22 +1,39 @@
-#name {
-    color: red;
-}
-
-#signin {
-    border: 1px solid red;
-    width: 30%;
-}
-
 body {
+    border: 2px solid purple;
+    border-radius: 25px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    height: 80vh;
+    margin: auto;
+    margin-top: 5%;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 10% 10% 70% 10%;
     grid-template-areas: 
-    'register login snippet';
+    '.  .   .'
+    '.  menu    .'
+    '.  main    .'
+    '.  .   .';
 }
 
-#registerContainer {grid-template-areas: register;}
-#loginContainer {grid-template-areas: login;}
+#menuContainer {
+    grid-area: menu;
+    display: flex;
+    flex-direction: row;
+}
 
-#reglink {
-    margin-left: 120px;
+#menuContainer > a {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
+#mainContainer {
+    grid-area: main;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.auth {
+    font-size: 30px;
 }
