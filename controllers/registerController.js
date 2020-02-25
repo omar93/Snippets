@@ -7,7 +7,9 @@ homeController.index = (req, res) => {
 }
 
 homeController.new = (req, res) => {
-  res.render('register/index', { condition: true })
+  console.log('grattis')
+  req.session.flash = { type: 'success', text: `user ${req.body.username} was registered successfully` }
+  res.redirect('../login')
 }
 
 module.exports = homeController
