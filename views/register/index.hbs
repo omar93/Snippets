@@ -1,11 +1,13 @@
 <div class="auth">
     <form method="POST" action="/register/new">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" placeholder="user" autocomplete="username" required="true"><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" placeholder="******" autocomplete="current-password" required="true"><br><br>
         <label for="email">Email</label><br>
         <input type="email" id="email" name="email" placeholder="email@email.com" autocomplete="email"><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" placeholder="******" autocomplete="current-password" required="true"><br><br>
+        <label for="firstname">First name:</label><br>
+        <input type="text" id="firstname" name="firstname" placeholder="firstname" autocomplete="firstname" required="false"><br><br>
+        <label for="lastname">Last name:</label><br>
+        <input type="text" id="lastname" name="lastname" placeholder="lastname" autocomplete="lastname" required="false"><br><br>
         <input type="submit" value="Register">
     </form>
 </div>

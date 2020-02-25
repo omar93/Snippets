@@ -1,4 +1,4 @@
-// const User = require('../models/User')
+const User = require('../models/User')
 
 const homeController = {}
 
@@ -7,9 +7,14 @@ homeController.index = (req, res) => {
 }
 
 homeController.new = (req, res) => {
-  console.log('grattis')
-  req.session.flash = { type: 'success', text: `user ${req.body.username} was registered successfully` }
-  res.redirect('../login')
+  const newUser = new User()
+  newUser.firstName = req.body.firstname
+  newUser.lastName = req.body.lastname
+  newUser.password = req.body.password
+  newUser.email = req.body.email
+  newUser.save()
+  req.session.flash = { type: 'success', text: `${req.body.email} was registered successfully` }
+  res.redirect('..')
 }
 
 module.exports = homeController

@@ -1,4 +1,5 @@
 body {
+    font-family: sans-serif;
     border: 2px solid purple;
     border-radius: 25px;
     display: grid;
