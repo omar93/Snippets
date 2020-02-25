@@ -11,7 +11,8 @@ const userDataSchema = new Schema({
 const UserData = mongoose.model('UserData', userDataSchema)
 
 homeController.index = (req, res) => {
-  res.render('home/index', { condition: true })
+  const user = req.session
+  res.render('home/index', { user })
 }
 
 homeController.indexPost = async (req, res) => {
@@ -19,7 +20,6 @@ homeController.indexPost = async (req, res) => {
     name: req.body.username,
     pw: req.body.password
   }
-
   const data = new UserData(item)
   await data.save()
   res.redirect('/')

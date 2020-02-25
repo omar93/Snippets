@@ -7,9 +7,10 @@ homeController.index = (req, res) => {
 }
 
 homeController.indexPost = (req, res) => {
-  User.findOne({ username: req.body.username, password: req.body.password }, (err, user) => {
+  User.findOne({ email: req.body.email, password: req.body.password }, (err, user) => {
     if (!err) {
       if (user) {
+        req.session.email = req.body.email
         req.session.flash = { type: 'success', text: `Welcome ${req.body.email}` }
         res.redirect('..')
       } else {

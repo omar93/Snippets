@@ -35,8 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // setup and use session middleware (https://github.com/expressjs/session)
 const sessionOptions = {
-  name: 'name of keyboard cat', // Don't use default session cookie name.
-  secret: 'keyboard cat', // Change it!!! The secret is used to hash the session with HMAC.
+  name: 'assign2 1dv023', // Don't use default session cookie name.
+  secret: 'assign2SecretKeyoa222ct', // Change it!!! The secret is used to hash the session with HMAC.
   resave: false, // Resave even if a request is not changing the session.
   saveUninitialized: false, // Don't save a created but not modified session.
   cookie: {
