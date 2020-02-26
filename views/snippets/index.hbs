@@ -1,2 +1,14 @@
-<p>Här ska alla snippets in också</p>
+<ul>
+    {{#if viewData }}
+    {{#each viewData.snippets}}
+    <li>
+        <div class="code">
+            <p id="{{this.id}}"> {{this.snippet}} </p>
+            <a href="snippets/{{this.id}}/edit">Edit</a>
+            <a href="snippets/{{this.id}}/remove">Delete</a>
+        </div>
+    </li>
+    {{/each}}
+</ul>
+{{/if}}
 <a href="/snippets/new">New snippet</a>

@@ -38,3 +38,21 @@ body {
 .auth {
     font-size: 30px;
 }
+
+ul {
+    list-style: none;
+}
+
+p {
+    width: 100%;
+    white-space: pre-wrap
+}
+
+.code {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    color: grey;
+    margin-bottom: 1.6em;
+    overflow: auto;
+    padding: 1px 10px;
+}

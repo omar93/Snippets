@@ -1,0 +1,5 @@
+<p>{{viewData.id}}</p>
+   <textarea form="snippetForm">{{viewData.snippet}}</textarea>
+    <form method="POST" action="/snippets/{{viewData.id}}/update" id="{{viewData.id}}">
+        <input type="submit" value="Update snippet">
+    </form>

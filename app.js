@@ -11,6 +11,9 @@ const register = require('./routes/registerRouter')
 const login = require('./routes/loginRouter')
 const snippets = require('./routes/snippetsRouter')
 const session = require('express-session')
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb+srv://admin:omar93@1dv023-cspjr.mongodb.net/assign2?retryWrites=true&w=majority')
 
 // view eninge setup
 app.engine('hbs', hbs.express4({

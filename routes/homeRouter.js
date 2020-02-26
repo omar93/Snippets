@@ -4,6 +4,5 @@ const router = express.Router()
 const controller = require('../controllers/homeController.js')
 
 router.get('/', controller.index)
-router.post('/', controller.indexPost)
 
 module.exports = router

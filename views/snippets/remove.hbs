@@ -1,0 +1,6 @@
+<h3>Delete snippet:</h3>
+<h3>{{viewData.snippet}}?</h3>
+<form method="POST" action="/snippets/{{viewData.id}}/delete">
+  <input type="hidden" name="id" value="{{viewData.id}}" />
+  <button type="submit">Delete Snippet</button>
+</form>
