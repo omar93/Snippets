@@ -1,5 +1,5 @@
-<textarea form="snippetForm" name="snippet" id="snippet">{{viewData.snippet}}</textarea>
-<form method="POST" action="/snippets/{{viewData.id}}/update" id="{{viewData.id}}">
+<textarea form="snippetForm" name="snippet">{{viewData.snippet}}</textarea>
+<form method="POST" action="/snippets/{{viewData.id}}/update" id="snippetForm">
 <input type="hidden" name="id" value="{{viewData.id}}" />
     <input type="submit" value="Update snippet">
 </form>

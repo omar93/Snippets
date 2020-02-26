@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const hbs = require('express-hbs')
 const path = require('path')
@@ -13,7 +14,11 @@ const snippets = require('./routes/snippetsRouter')
 const session = require('express-session')
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://admin:omar93@1dv023-cspjr.mongodb.net/assign2?retryWrites=true&w=majority')
+mongoose.connect(process.env.connectionsString, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 
 // view eninge setup
 app.engine('hbs', hbs.express4({

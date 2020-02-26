@@ -13,8 +13,8 @@ homeController.index = async (req, res, next) => {
         }))
     }
     res.render('snippets/index', { viewData })
-  } catch (error) {
-    next(error)
+  } catch (err) {
+    next(err)
   }
 }
 
@@ -101,8 +101,8 @@ homeController.delete = async (req, res, next) => {
       req.session.flash = { type: 'failed', text: 'This is not your code snippet so you can not delete it' }
       res.redirect('/snippets')
     }
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.log(err)
   }
 }
 module.exports = homeController
