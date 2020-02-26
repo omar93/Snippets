@@ -42,33 +42,39 @@ homeController.edit = async (req, res, next) => {
     const snippetData = await Snippet.findOne({ _id: req.params.id })
     const viewData = {
       id: snippetData._id,
-      snippet: snippetData.snippet
+      snippet: snippetData.snippet,
+      creator: snippetData.email
     }
     res.render('snippets/edit', { viewData })
-  } catch (error) {
-    req.session.flash = { type: 'danger', text: error.message }
+  } catch (err) {
+    console.log(err)
     res.redirect('..')
   }
 }
 
 homeController.update = async (req, res) => {
   try {
-    console.log(req.body.id, ' hihihihi')
-    await Snippet.updateOne({ _id: req.body.id }, {
-      description: req.body.description,
-      done: req.body.done === 'on'
-    })
-    req.session.flash = { type: 'success', text: 'snippet updated successfully' }
-    res.redirect('/snippets')
-  } catch (error) {
-    req.session.flash = { type: 'failed', text: error.message }
-    res.redirect('./edit')
+    const snippet = await Snippet.findById(req.body.id)
+    const creator = snippet.creator
+
+    if (creator === req.session.email) {
+      await Snippet.updateOne({ _id: req.body.id }, {
+        snippet: req.body.snippet,
+        create: req.session.email
+      })
+      req.session.flash = { type: 'success', text: 'Updated code snippet' }
+      res.redirect('/snippets')
+    } else {
+      req.session.flash = { type: 'failed', text: 'This is not your code snippet so you can not delete it' }
+      res.redirect('/snippets')
+    }
+  } catch (err) {
+    console.log(err)
   }
 }
 
 homeController.remove = async (req, res, next) => {
   try {
-    console.log('AAAA', req.params.id)
     const snippetData = await Snippet.findOne({ _id: req.params.id })
     const viewData = {
       id: snippetData._id,
@@ -84,12 +90,19 @@ homeController.remove = async (req, res, next) => {
 
 homeController.delete = async (req, res, next) => {
   try {
-    await Snippet.deleteOne({ _id: req.body.id })
-    req.session.flash = { type: 'success', text: 'The task was deleted successfully.' }
-    res.redirect('/snippets')
+    const snippet = await Snippet.findById(req.body.id)
+    const creator = snippet.creator
+
+    if (creator === req.session.email) {
+      await Snippet.deleteOne({ _id: req.body.id })
+      req.session.flash = { type: 'success', text: 'Deleted code snippet' }
+      res.redirect('/snippets')
+    } else {
+      req.session.flash = { type: 'failed', text: 'This is not your code snippet so you can not delete it' }
+      res.redirect('/snippets')
+    }
   } catch (error) {
-    req.session.flash = { type: 'danger', text: error.message }
-    res.redirect('./remove')
+    console.log(error)
   }
 }
 module.exports = homeController
