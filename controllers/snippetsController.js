@@ -65,7 +65,7 @@ homeController.update = async (req, res) => {
       req.session.flash = { type: 'success', text: 'Updated code snippet' }
       res.redirect('/snippets')
     } else {
-      req.session.flash = { type: 'failed', text: 'This is not your code snippet so you can not delete it' }
+      req.session.flash = { type: 'failed', text: 'This is not your code snippet so you can not edit it' }
       res.redirect('/snippets')
     }
   } catch (err) {

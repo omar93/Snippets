@@ -45,7 +45,7 @@ ul {
 
 p {
     width: 100%;
-    white-space: pre-wrap
+    white-space: pre-line
 }
 
 .code {
