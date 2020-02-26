@@ -3,6 +3,7 @@ const router = express.Router()
 
 const controller = require('../controllers/homeController.js')
 
+// The route for the starting page
 router.get('/', controller.index)
 
 module.exports = router

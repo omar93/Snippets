@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+// The snippet schema used in the mongoDB for snippets
 const snippetSchema = new mongoose.Schema({
   snippet: {
     type: String,
@@ -13,6 +14,7 @@ const snippetSchema = new mongoose.Schema({
   timestamps: true
 })
 
+// The model that is using the schema to be exported for snippets
 const Snippet = mongoose.model('Snippet', snippetSchema)
 
 module.exports = Snippet

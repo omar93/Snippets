@@ -3,6 +3,7 @@ const router = express.Router()
 
 const controller = require('../controllers/snippetsController')
 
+// All the routes for the snippets
 router.get('/', controller.index)
 
 router.get('/new', controller.new)

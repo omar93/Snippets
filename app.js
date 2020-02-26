@@ -14,6 +14,7 @@ const snippets = require('./routes/snippetsRouter')
 const session = require('express-session')
 const mongoose = require('mongoose')
 
+// atlas mongodb connection
 mongoose.connect(process.env.connectionsString, {
   useCreateIndex: true,
   useNewUrlParser: true,
@@ -41,12 +42,12 @@ app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-// setup and use session middleware (https://github.com/expressjs/session)
+// express session middleware
 const sessionOptions = {
-  name: 'assign2 1dv023', // Don't use default session cookie name.
-  secret: 'assign2SecretKeyoa222ct', // Change it!!! The secret is used to hash the session with HMAC.
-  resave: false, // Resave even if a request is not changing the session.
-  saveUninitialized: false, // Don't save a created but not modified session.
+  name: 'assign2 1dv023',
+  secret: 'assign2SecretKeyoa222ct',
+  resave: false,
+  saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 // 1 day
   }
@@ -55,12 +56,11 @@ app.use(session(sessionOptions))
 
 // middleware to be executed before the routes
 app.use((req, res, next) => {
-  // flash messages - survives only a round trip
+  // the message shown when you register, login or handle snippets
   if (req.session.flash) {
     res.locals.flash = req.session.flash
     delete req.session.flash
   }
-
   next()
 })
 
