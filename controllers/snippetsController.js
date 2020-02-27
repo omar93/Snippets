@@ -55,7 +55,7 @@ homeController.create = async (req, res) => {
     })
     await newSnippet.save()
     req.session.flash = { type: 'success', text: 'snippet saved successfully' }
-    res.redirect('.')
+    res.redirect('/snippets')
   }
 }
 

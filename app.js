@@ -11,6 +11,8 @@ const routes = require('./routes/homeRouter')
 const register = require('./routes/registerRouter')
 const login = require('./routes/loginRouter')
 const snippets = require('./routes/snippetsRouter')
+const logout = require('./routes/logoutRouter')
+
 const session = require('express-session')
 const mongoose = require('mongoose')
 
@@ -28,14 +30,6 @@ app.engine('hbs', hbs.express4({
 }))
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'views'))
-
-hbs.registerHelper('login', function (value, options) {
-  return parseInt(value) + 1
-})
-
-hbs.registerHelper('register', function (value, options) {
-  return parseInt(value) + 1
-})
 
 // middleware
 app.use(logger('dev'))
@@ -69,6 +63,7 @@ app.use('/', routes)
 app.use('/register', register)
 app.use('/login', login)
 app.use('/snippets', snippets)
+app.use('/logout', logout)
 
 // catch 404
 app.use('*', (req, res) => {

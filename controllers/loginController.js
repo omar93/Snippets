@@ -21,17 +21,24 @@ homeController.index = (req, res) => {
  * @param {object } req - Express request object.
  * @param {object } res - Express response object.
  */
-homeController.indexPost = (req, res) => {
-  User.findOne({ email: req.body.email, password: req.body.password }, (err, user) => {
-    if (!err) {
-      if (user) {
-        req.session.email = req.body.email
-        req.session.flash = { type: 'success', text: `Welcome ${req.body.email}` }
-        res.redirect('..')
-      } else {
-        req.session.flash = { type: 'failed', text: 'Wrong email or password' }
-        res.redirect('./login')
-      }
+homeController.indexPost = async (req, res) => {
+  await User.findOne({ email: req.body.email }, (err, user) => {
+    if (err) { console.log(err) }
+    if (!user) { console.log('ingen användare?') }
+    if (user) {
+      user.comparePassword(req.body.password, (err, isMatch) => {
+        if (isMatch && isMatch === true) {
+          req.session.email = user
+          req.session.email = req.body.email
+          req.session.flash = { type: 'success', text: `Welcome ${req.body.email}` }
+          res.redirect('/')
+          console.log('Password123:', isMatch) // -> Password123: true
+        } else {
+          console.log(err)
+          req.session.flash = { type: 'failed', text: 'Wrong email or password' }
+          res.redirect('./login')
+        }
+      })
     }
   })
 }
