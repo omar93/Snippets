@@ -9,16 +9,32 @@ const homeController = {}
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
+
+// if (snippet.creator === req.session.email) {
+//   correctUser = true
+// }
+
 homeController.index = async (req, res) => {
+  // let correctUser = false
   try {
     const viewData = {
       snippets: (await Snippet.find({}))
         .map(snippet => ({
           id: snippet._id,
           snippet: snippet.snippet,
-          creator: snippet.create
+          creator: snippet.creator
         }))
     }
+
+    for (let i = 0; i < viewData.snippets.length; i++) {
+      const snippetObject = viewData.snippets[i]
+      if (snippetObject.creator === req.session.email) {
+        snippetObject.correctUser = true
+      } else {
+        snippetObject.correctUser = false
+      }
+    }
+    console.log(viewData)
     res.render('snippets/index', { viewData })
   } catch (err) {
     console.log(err)

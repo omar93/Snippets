@@ -30,7 +30,7 @@ homeController.indexPost = (req, res) => {
   })
   newUser.save()
   req.session.flash = { type: 'success', text: `${req.body.email} was registered successfully` }
-  res.redirect('..')
+  res.redirect('/login')
 }
 
 module.exports = homeController
