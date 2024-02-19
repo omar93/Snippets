@@ -24,7 +24,11 @@ loginController.index = (req, res) => {
 loginController.indexPost = async (req, res) => {
   await User.findOne({ email: req.body.email }, (err, user) => {
     if (err) { console.log(err) }
-    if (!user) { console.log('ingen användare?') }
+    if (!user) { 
+      console.log('ingen användare?') 
+      req.session.flash = { type: 'fail', text: `Welcome ${req.body.email}` }
+      res.redirect('/login')
+    }
     if (user) {
       user.comparePassword(req.body.password, (err, isMatch) => {
         if (isMatch && isMatch === true) {

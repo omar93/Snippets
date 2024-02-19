@@ -56,3 +56,7 @@ p {
     overflow: auto;
     padding: 1px 10px;
 }
+
+#flash-container {
+    color:red;
+}
