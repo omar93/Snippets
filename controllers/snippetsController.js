@@ -1,6 +1,6 @@
-const Snippet = require('../models/Snippet')
+import { Snippet } from '../models/Snippet.js'
 
-const homeController = {}
+const snippetsController = {}
 
 /**
  * This is the index controller for the snippets
@@ -14,7 +14,7 @@ const homeController = {}
 //   correctUser = true
 // }
 
-homeController.index = async (req, res) => {
+snippetsController.index = async (req, res) => {
   // let correctUser = false
   try {
     const viewData = {
@@ -49,7 +49,7 @@ homeController.index = async (req, res) => {
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
-homeController.new = (req, res) => {
+snippetsController.new = (req, res) => {
   res.render('snippets/new')
 }
 
@@ -60,7 +60,7 @@ homeController.new = (req, res) => {
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
-homeController.create = async (req, res) => {
+snippetsController.create = async (req, res) => {
   if (req.session.email === undefined) {
     req.session.flash = { type: 'failed', text: 'No user found, you need to sign in to be able to post a snippet' }
     res.redirect('/login')
@@ -82,7 +82,7 @@ homeController.create = async (req, res) => {
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
-homeController.edit = async (req, res) => {
+snippetsController.edit = async (req, res) => {
   try {
     const snippetData = await Snippet.findOne({ _id: req.params.id })
     const viewData = {
@@ -105,7 +105,7 @@ homeController.edit = async (req, res) => {
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
-homeController.update = async (req, res) => {
+snippetsController.update = async (req, res) => {
   try {
     const snippet = await Snippet.findById(req.body.id)
     const creator = snippet.creator
@@ -133,7 +133,7 @@ homeController.update = async (req, res) => {
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
-homeController.remove = async (req, res) => {
+snippetsController.remove = async (req, res) => {
   try {
     const snippetData = await Snippet.findOne({ _id: req.params.id })
     const viewData = {
@@ -156,7 +156,7 @@ homeController.remove = async (req, res) => {
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
-homeController.delete = async (req, res) => {
+snippetsController.delete = async (req, res) => {
   try {
     const snippet = await Snippet.findById(req.body.id)
     const creator = snippet.creator
@@ -173,4 +173,5 @@ homeController.delete = async (req, res) => {
     console.log(err)
   }
 }
-module.exports = homeController
+
+export { snippetsController }

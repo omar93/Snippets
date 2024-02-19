@@ -1,9 +1,9 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
 
-const controller = require('../controllers/homeController.js')
+import { homeController } from '../controllers/homeController.js'
 
 // The route for the starting page
-router.get('/', controller.index)
+router.get('/', homeController.index)
 
-module.exports = router
+export { router } 

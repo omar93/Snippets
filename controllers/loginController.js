@@ -1,6 +1,6 @@
-const User = require('../models/User')
+import { User } from '../models/User.js' 
 
-const homeController = {}
+const loginController = {}
 
 /**
  * This is the controller for the login page.
@@ -9,7 +9,7 @@ const homeController = {}
  * @param {object } req - Express request object.
  * @param {object } res - Express response object.
  */
-homeController.index = (req, res) => {
+loginController.index = (req, res) => {
   res.render('login/index')
 }
 
@@ -21,7 +21,7 @@ homeController.index = (req, res) => {
  * @param {object } req - Express request object.
  * @param {object } res - Express response object.
  */
-homeController.indexPost = async (req, res) => {
+loginController.indexPost = async (req, res) => {
   await User.findOne({ email: req.body.email }, (err, user) => {
     if (err) { console.log(err) }
     if (!user) { console.log('ingen användare?') }
@@ -42,4 +42,5 @@ homeController.indexPost = async (req, res) => {
     }
   })
 }
-module.exports = homeController
+
+export { loginController }

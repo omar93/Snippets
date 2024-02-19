@@ -1,10 +1,10 @@
-const express = require('express')
+import express from 'express'
+import { registerController } from '../controllers/registerController.js'
+
 const router = express.Router()
 
-const controller = require('../controllers/registerController.js')
-
 // Both the routes for the register
-router.get('/', controller.index)
-router.post('/new', controller.indexPost)
+router.get('/', registerController.index)
+router.post('/new', registerController.indexPost)
 
-module.exports = router
+export { router }

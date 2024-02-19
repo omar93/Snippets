@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 // The snippet schema used in the mongoDB for snippets
 const snippetSchema = new mongoose.Schema({
@@ -17,4 +17,4 @@ const snippetSchema = new mongoose.Schema({
 // The model that is using the schema to be exported for snippets
 const Snippet = mongoose.model('Snippet', snippetSchema)
 
-module.exports = Snippet
+export { Snippet }

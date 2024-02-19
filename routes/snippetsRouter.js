@@ -1,19 +1,19 @@
-const express = require('express')
+import express from 'express'
+import { snippetsController } from '../controllers/snippetsController.js'
+
 const router = express.Router()
 
-const controller = require('../controllers/snippetsController')
-
 // All the routes for the snippets
-router.get('/', controller.index)
+router.get('/', snippetsController.index)
 
-router.get('/new', controller.new)
+router.get('/new', snippetsController.new)
 
-router.post('/create', controller.create)
+router.post('/create', snippetsController.create)
 
-router.get('/:id/edit', controller.edit)
-router.post('/:id/update', controller.update)
+router.get('/:id/edit', snippetsController.edit)
+router.post('/:id/update', snippetsController.update)
 
-router.post('/:id/delete', controller.delete)
-router.get('/:id/remove', controller.remove)
+router.post('/:id/delete', snippetsController.delete)
+router.get('/:id/remove', snippetsController.remove)
 
-module.exports = router
+export { router }
