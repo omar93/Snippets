@@ -1,4 +1,4 @@
-Node.js & Express CRUD App
+# Node.js & Express CRUD App
 Explore our efficient CRUD app built with Node.js and Express. Benefit from server-side rendered (SSR) static sites for optimized performance. Seamless backend integration with Express Sessions ensures secure user-server interactions.
 
 📡 MongoDB - A Solid Foundation for Data
