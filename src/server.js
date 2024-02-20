@@ -18,7 +18,7 @@ import session from 'express-session'
 import mongoose from 'mongoose'
 
 // atlas mongodb connection
-mongoose.connect(process.env.connectionsString, {
+mongoose.connect(process.env.connectionString, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
