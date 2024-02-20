@@ -5,7 +5,7 @@ FROM node:21-alpine3.18
 WORKDIR /usr/src/app
 
 # Enviorment variables
-ENV connectionString='mongodb://root:password@192.168.1.200:27017/'
+ENV connectionString='mongodb://root:password@mongodb:27017/'
 ENV port=8000
 
 # Install app dependencies
@@ -19,5 +19,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8000
 CMD [ "node", "server.js" ]
