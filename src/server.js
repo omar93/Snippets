@@ -1,20 +1,21 @@
-require('dotenv').config()
-const express = require('express')
-const hbs = require('express-hbs')
-const path = require('path')
-const logger = require('morgan')
+import 'dotenv/config.js'
+import express from 'express'
+import hbs from 'express-hbs/lib/hbs.js'
+import path from 'path'
+import logger  from 'morgan'
 
 const app = express()
-const port = 8000
+const port = process.env.port || 8000 
+const __dirname = import.meta.dirname;
 
-const routes = require('./routes/homeRouter')
-const register = require('./routes/registerRouter')
-const login = require('./routes/loginRouter')
-const snippets = require('./routes/snippetsRouter')
-const logout = require('./routes/logoutRouter')
+import { router as routes } from  './routes/homeRouter.js'
+import { router as register} from './routes/registerRouter.js'
+import { router as login} from './routes/loginRouter.js'
+import { router as snippets} from './routes/snippetsRouter.js'
+import { router as logout } from './routes/logoutRouter.js'
 
-const session = require('express-session')
-const mongoose = require('mongoose')
+import session from 'express-session'
+import mongoose from 'mongoose'
 
 // atlas mongodb connection
 mongoose.connect(process.env.connectionsString, {
@@ -34,7 +35,7 @@ app.set('views', path.join(__dirname, 'views'))
 // middleware
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '../public')))
 
 // express session middleware
 const sessionOptions = {

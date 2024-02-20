@@ -5,17 +5,22 @@
 <head>
   <meta charset="utf-8">
   <title>Welcome Express</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div id="wrapper">
   {{>head}}
 
   <div id="mainContainer">
+    <div id="flash-container">
     {{>flash}}
+    </div>
     {{{body}}}
   </div>
+
+</div>
 
 </body>
 

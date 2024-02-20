@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
 const SALT_WORK_FACTOR = 10
 
 // The snippet schema used in the mongoDB for users
@@ -58,6 +58,5 @@ userSchema.methods.comparePassword = function (candidatePassword, callback) {
 }
 
 // The model that is using the schema to be exported for users
-const user = mongoose.model('User', userSchema)
-
-module.exports = user
+const User = mongoose.model('User', userSchema)
+export { User }

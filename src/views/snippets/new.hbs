@@ -1,0 +1,8 @@
+{{#if user}}
+    <div class="newSnippet">
+        <textarea name="snippet" form="snippetForm"></textarea>
+        <form method="POST" action="/snippets/create" id="snippetForm">
+            <input type="submit" value="add snippet">
+        </form>
+    </div>
+{{/if}}

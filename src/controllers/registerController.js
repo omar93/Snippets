@@ -1,6 +1,6 @@
-const User = require('../models/User')
+import { User } from '../models/User.js'
 
-const homeController = {}
+const registerController = {}
 
 /**
  * This is the controller for the register page
@@ -9,7 +9,7 @@ const homeController = {}
  * @param {object } req - Express request object.
  * @param {object } res - Express response object.
  */
-homeController.index = (req, res) => {
+registerController.index = (req, res) => {
   res.render('register/index', { condition: true })
 }
 
@@ -21,7 +21,7 @@ homeController.index = (req, res) => {
  * @param {object } req - Express request object.
  * @param {object } res - Express response object.
  */
-homeController.indexPost = (req, res) => {
+registerController.indexPost = (req, res) => {
   const newUser = new User({
     firstName: req.body.firstname,
     lastName: req.body.lastname,
@@ -33,4 +33,4 @@ homeController.indexPost = (req, res) => {
   res.redirect('/login')
 }
 
-module.exports = homeController
+export { registerController }
