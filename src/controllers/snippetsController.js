@@ -1,3 +1,4 @@
+import session from 'express-session'
 import { Snippet } from '../models/Snippet.js'
 
 const snippetsController = {}

@@ -1,0 +1,14 @@
+{{#if user}}
+    <span>TJA {user.email}</span>
+{{else}}
+    <h3>Signin</h3>
+    <div class="auth">
+        <form method="POST" action="/login">
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" placeholder="email@email.com" autocomplete="email" required="true"><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" placeholder="******" autocomplete="current-password" required="true"><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+{{/if}}

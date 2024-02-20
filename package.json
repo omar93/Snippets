@@ -3,9 +3,9 @@
   "name": "assignment-2",
   "version": "1.0.0",
   "description": "assignment 2 in 1dv023",
-  "main": "app.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./src/server.js",
     "lint": "npx eslint . || exit 0",
     "lint:fix": "npx eslint . --fix || exit 0",
     "devstart": "nodemon --inspect app.js"

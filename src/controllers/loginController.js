@@ -27,7 +27,7 @@ loginController.indexPost = async (req, res) => {
     if (!user) { 
       console.log('ingen användare?') 
       req.session.flash = { type: 'fail', text: `Welcome ${req.body.email}` }
-      res.redirect('/login')
+      // res.redirect('/login')
     }
     if (user) {
       user.comparePassword(req.body.password, (err, isMatch) => {
