@@ -1,6 +1,6 @@
-{{#if user}}
+{{#if user.email}}
     <div class="newSnippet">
-        <textarea name="snippet" form="snippetForm"></textarea>
+        <textarea name="snippet" form="snippetForm" label="code-snippets"></textarea>
         <form method="POST" action="/snippets/create" id="snippetForm">
             <input type="submit" value="add snippet">
         </form>

@@ -35,8 +35,8 @@ snippetsController.index = async (req, res) => {
         snippetObject.correctUser = false
       }
     }
-    console.log(viewData)
-    res.render('snippets/index', { viewData })
+    const user = req.session
+    res.render('snippets/index', { viewData, user })
   } catch (err) {
     console.log(err)
   }
@@ -51,7 +51,8 @@ snippetsController.index = async (req, res) => {
  * @param {object} res - Express response object.
  */
 snippetsController.new = (req, res) => {
-  res.render('snippets/new')
+  const user = req.session
+  res.render('snippets/new' , { user })
 }
 
 /**
@@ -91,7 +92,8 @@ snippetsController.edit = async (req, res) => {
       snippet: snippetData.snippet,
       creator: snippetData.email
     }
-    res.render('snippets/edit', { viewData })
+    const user = req.session
+    res.render('snippets/edit', { viewData, user })
   } catch (err) {
     console.log(err)
     res.redirect('..')
@@ -142,7 +144,8 @@ snippetsController.remove = async (req, res) => {
       creator: snippetData.email,
       snippet: snippetData.snippet
     }
-    res.render('snippets/remove', { viewData })
+    const user = req.session
+    res.render('snippets/remove', { viewData, user })
   } catch (error) {
     req.session.flash = { type: 'danger', text: error.message }
     res.redirect('..')
